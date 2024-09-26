@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
@@ -6,6 +6,7 @@ import { Switch } from '@headlessui/react';
 import { PhotoIcon } from '@heroicons/react/24/solid';
 import { toPng } from 'html-to-image';
 import PostPreview from './PostPreview';
+import Image from 'next/image'; // Import the Image component
 
 export default function PostCreator() {
   const [text, setText] = useState('');
@@ -117,7 +118,13 @@ export default function PostCreator() {
         <label className="block text-sm font-medium text-gray-700">Profile Picture</label>
         <div className="mt-1 flex items-center">
           {profileImage ? (
-            <img src={profileImage} alt="Profile" className="h-12 w-12 rounded-full object-cover" />
+            <Image 
+              src={profileImage} 
+              alt="Profile" 
+              width={48} // Set width 
+              height={48} // Set height 
+              className="rounded-full object-cover"
+            />
           ) : (
             <PhotoIcon className="h-12 w-12 text-gray-300" aria-hidden="true" />
           )}
@@ -161,4 +168,3 @@ export default function PostCreator() {
     </div>
   );
 }
-
