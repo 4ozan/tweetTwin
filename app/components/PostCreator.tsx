@@ -6,7 +6,7 @@ import { Switch } from '@headlessui/react';
 import { PhotoIcon } from '@heroicons/react/24/solid';
 import { toPng } from 'html-to-image';
 import PostPreview from './PostPreview';
-import Image from 'next/image'; // Import the Image component
+import Image from 'next/image';
 
 export default function PostCreator() {
   const [text, setText] = useState('');
@@ -43,7 +43,7 @@ export default function PostCreator() {
   };
 
   const handleContribute = () => {
-    alert('Thanks for contributing!');
+    window.open("https://paystack.com/pay/ansigen", "_blank"); // Updated to open Paystack link
   };
 
   return (
@@ -145,13 +145,13 @@ export default function PostCreator() {
         Download Post
       </button>
 
-       {/* Contribution Button */}
-       <button
-  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-  onClick={() => window.open("https://paystack.com/pay/ansigen", "_blank")}
->
-  Contribute
-</button>
+      {/* Contribution Button */}
+      <button
+        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+        onClick={handleContribute} // Use the updated function here
+      >
+        Contribute
+      </button>
 
       {/* Live Preview */}
       {previewContainer &&
